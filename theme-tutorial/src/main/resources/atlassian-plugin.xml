@@ -1,0 +1,45 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="theme-tutorial"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="theme-tutorial-resources" name="theme-tutorial Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="theme-tutorial.css" location="/css/theme-tutorial.css"/>
+        <resource type="download" name="theme-tutorial.js" location="/js/theme-tutorial.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>theme-tutorial</context>
+    </web-resource>
+
+    <theme key="simpletheme" name="Simple Theme" class="com.atlassian.confluence.themes.BasicTheme">
+        <description>A simple custom theme</description>
+        <param name="includeClassicStyles" value="false"/>
+        <resource type="download" name="default-theme.css" location="/includes/css/default-theme.css">
+            <param name="source" value="webContext"/>
+        </resource>
+        <resource type="download" name="theme-tutorial.css" location="/css/theme-tutorial.css"/>
+        <colour-scheme key="${project.groupId}.${project.artifactId}:earth-colours"/>
+        <space-ia value="true"/>
+    </theme>
+    <colour-scheme key="earth-colours" name="Brown and Red Earth Colours" class="com.atlassian.confluence.themes.BaseColourScheme">
+        <colour key="property.style.topbarcolour" value="#440000"/>
+        <colour key="property.style.spacenamecolour" value="#999999"/>
+        <colour key="property.style.headingtextcolour" value="#663300"/>
+        <colour key="property.style.linkcolour" value="#663300"/>
+        <colour key="property.style.bordercolour" value="#440000"/>
+        <colour key="property.style.navbgcolour" value="#663300"/>
+        <colour key="property.style.navtextcolour" value="#ffffff"/>
+        <colour key="property.style.navselectedbgcolour" value="#440000"/>
+        <colour key="property.style.navselectedtextcolour" value="#ffffff"/>
+    </colour-scheme>
+</atlassian-plugin>
