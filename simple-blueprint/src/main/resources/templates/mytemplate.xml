@@ -1,0 +1,20 @@
+<table>
+    <colgroup>
+        <col/>
+        <col/>
+    </colgroup>
+    <tbody>
+        <tr>
+            <th>姓名</th>
+            <th>日期</th>
+        </tr>
+        <tr>
+            <td>
+                在此处输入名字。
+            </td>
+            <td>
+                在此处输入日期。
+            </td>
+        </tr>
+    </tbody>
+</table>
