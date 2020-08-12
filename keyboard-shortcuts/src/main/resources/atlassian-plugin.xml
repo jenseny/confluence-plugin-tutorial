@@ -1,0 +1,39 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="keyboard-shortcuts"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="keyboard-shortcuts-resources" name="keyboard-shortcuts Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="keyboard-shortcuts.css" location="/css/keyboard-shortcuts.css"/>
+        <resource type="download" name="keyboard-shortcuts.js" location="/js/keyboard-shortcuts.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>keyboard-shortcuts</context>
+    </web-resource>
+
+    <keyboard-shortcut key="about-confluence-page" i18n-name-key="keyboard.shortcut.go.to.about.page">
+        <order>200</order>
+        <description key="keyboard.shortcut.go.to.about.page.desc"/>
+        <shortcut>ga</shortcut>
+        <operation type="goTo">/aboutconfluencepage.action</operation>
+        <context>global</context>
+    </keyboard-shortcut>
+    <keyboard-shortcut key="scroll-and-toggle-user-menu" i18n-name-key="keyboard.shortcut.toggle.user.menu">
+        <order>200</order>
+        <description key="keyboard.shortcut.toggle.user.menu.desc"/>
+        <shortcut>[Alt+U]</shortcut>
+        <operation type="moveToAndClick">#user-menu-link</operation>
+        <context>global</context>
+    </keyboard-shortcut>
+    
+</atlassian-plugin>
