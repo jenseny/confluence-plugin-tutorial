@@ -1,0 +1,51 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="daily-report-blueprint"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="daily-report-blueprint-resources" name="daily-report-blueprint Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <transformation extension="soy">
+            <transformer key="soyTransformer">
+                <functions>com.atlassian.confluence.plugins.soy:soy-core-functions
+                </functions>
+            </transformer>
+        </transformation>
+        <resource type="download" name="daily-report-blueprint.css" location="/css/daily-report-blueprint.css"/>
+        <resource type="download" name="daily-report-blueprint.js" location="/js/daily-report-blueprint.js"/>
+        <resource type="download" name="daily-report.soy.js" location="/soy/daily-report.soy" />
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>create-content</context>
+    </web-resource>
+
+    <web-item key="create-by-daily-report-template" i18n-name-key="daily.report.create-link.title" section="system.create.dialog/content">
+        <description key="daily.report.create-link.description" />
+        <resource name="icon" type="download" location="/images/daily-report.png" />
+        <param name="blueprintKey" value="daily-report-blueprint" />
+    </web-item>
+
+    <blueprint key="daily-report-blueprint" content-template-key="daily-report-template" index-key="my-index" i18n-name-key="daily.report.blueprint.name">
+        <dialog-wizard key="daily-report-wizard">
+            <dialog-page id="page1Id"
+                         template-key="MyPlugin.Blueprints.Daily.Report.page1Form"
+                         title-key="daily.report.blueprint.wizard.page1.title"
+                         description-header-key="daily.report.blueprint.wizard.page1.desc.header"
+                         description-content-key="daily.report.blueprint.wizard.page1.desc.content"
+                         last="true"/>
+        </dialog-wizard>
+    </blueprint>
+
+    <content-template key="daily-report-template" i18n-name-key="daily.report.blueprint.title">
+        <resource name="template" type="download" location="/templates/mytemplate.xml" />
+    </content-template>
+    
+</atlassian-plugin>

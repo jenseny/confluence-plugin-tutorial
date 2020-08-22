@@ -1,0 +1,23 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="extending-autoconvert"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="extending-autoconvert-resources" name="extending-autoconvert Web Resources">
+        <resource type="download" name="extending-autoconvert.css" location="/css/extending-autoconvert.css"/>
+        <resource type="download" name="extending-autoconvert.js" location="/js/extending-autoconvert.js"/>
+        <resource type="download" name="images/" location="/images"/>
+        <dependency>com.atlassian.confluence.plugins.confluence-paste:autoconvert-core</dependency>
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <context>editor</context>
+    </web-resource>
+    
+</atlassian-plugin>

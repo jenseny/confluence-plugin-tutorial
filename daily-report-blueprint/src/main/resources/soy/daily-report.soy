@@ -1,0 +1,18 @@
+{namespace MyPlugin.Blueprints.Daily.Report}
+/**
+* A form that accepts a person's name
+*/
+{template .page1Form}
+    <form action="#" method="post" class="aui">
+      <fieldset>
+        <div class="field-group">
+            <label for="vName">{getText('daily.report.blueprint.form.label.title.vName')}</label>
+            <input id="vName" class="text" type="text" name="vName">
+        </div>
+        <div class="field-group">
+             <label for="vDate">{getText('daily.report.blueprint.form.label.title.vDate')}</label>
+             <input class="aui-date-picker" id="vDate" type="date" name="vDate"/>
+        </div>
+      </fieldset>
+    </form>
+{/template}
